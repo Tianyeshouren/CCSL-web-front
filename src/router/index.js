@@ -11,17 +11,26 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      meta: {
+        keepAlive: false
+      }
     },
     {
       path: '/start',
       name: 'start',
-      component: start
+      component: start,
+      meta: {
+        keepAlive: true
+      }
     },
     {
       path: '/data',
       name: 'data',
-      component: data
+      component: data,
+      meta: {
+        keepAlive: false
+      }
     }
   ]
 })

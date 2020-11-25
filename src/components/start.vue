@@ -112,8 +112,17 @@ export default {
     },
     inputsymbol (e) {
       // console.log(e.target.value)
-      this.inputccsl = this.inputccsl + ' ' + e.target.innerText + ' '
-      this.$refs['input'].focus()
+      const i = this.$refs.input
+      if (i.selectionStart || i.selectionStart === 0) {
+        var startpos = i.selectionStart
+        var endpos = i.selectionEnd
+        this.inputccsl = this.inputccsl.substring(0, startpos) + e.target.innerText + this.inputccsl.substring(endpos, i.value.length)
+      }
+      this.$nextTick(() => {
+        this.$refs.input.selectionStart = startpos + e.target.innerText.length
+        this.$refs.input.selectionEnd = startpos + e.target.innerText.length
+        this.$refs['input'].focus()
+      })
     }
   },
   mounted () {
