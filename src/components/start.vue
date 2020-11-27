@@ -91,6 +91,7 @@ export default {
       // 对应 Python 提供的接口，这里的地址填写下面服务器运行的地址，本地则为127.0.0.1，外网则为 your_ip_address
       const path = 'http://127.0.0.1:5000/getMsg'
       // const output = 'http://127.0.0.1:5000/static/output.html'
+      that.outputHtml = '正在计算中'
       axios.post(path, that.data).then((response) => {
         var msg = response.data.ccsl
         var res = response.data.result
